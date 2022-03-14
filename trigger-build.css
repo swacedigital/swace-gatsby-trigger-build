@@ -1,0 +1,17 @@
+#wp-admin-bar-menu-trigger-build:hover {
+  background: #2c3338;
+}
+
+#wp-admin-bar-menu-trigger-build:hover #menu-trigger-js {
+  color: #72aee6;
+}
+
+#wp-admin-bar-menu-trigger-build .ab-empty-item {
+  display: none !important;
+}
+
+#menu-trigger-js {
+  cursor: pointer;
+  color: #ffffff;
+  padding: 0 8px 0 7px;
+}
