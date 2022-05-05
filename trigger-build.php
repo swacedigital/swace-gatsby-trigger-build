@@ -69,9 +69,9 @@ function prefix_admin_trigger_build()
 
 add_action('admin_post_trigger_build', 'prefix_admin_trigger_build');
 
-function load_custom_wp_admin_scripts()
+function load_trigger_build_wp_admin_scripts()
 {
-  wp_enqueue_style('custom_wp_admin_css', plugin_dir_url(__FILE__) . '/trigger-build.css');
-  wp_enqueue_script('redirects', plugin_dir_url(__FILE__) . '/trigger-build.js', array('jquery'));
+  wp_enqueue_style('trigger_build_wp_admin_css', plugin_dir_url(__FILE__) . '/trigger-build.css');
+  wp_enqueue_script('trigger_build', plugin_dir_url(__FILE__) . '/trigger-build.js', array('jquery'));
 }
-add_action('admin_enqueue_scripts', 'load_custom_wp_admin_scripts');
+add_action('admin_enqueue_scripts', 'load_trigger_build_wp_admin_scripts');
