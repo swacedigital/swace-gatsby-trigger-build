@@ -49,18 +49,16 @@ function prefix_admin_trigger_build()
     return;
   }
   $webhook = Settings::prefix_get_option('builds_api_webhook', 'wpgatsby_settings', false);
-  $siteId = basename($webhook);
-  $triggerUrl = 'https://webhook.gatsbyjs.com/hooks/builds/trigger/' . $siteId;
+  $triggerUrl = $webhook . '?clear_cache=true';
   $ch = curl_init();
   curl_setopt($ch, CURLOPT_URL, $triggerUrl);
   curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
-  curl_setopt($ch, CURLOPT_HTTPHEADER, array('x-gatsby-cache: false'));
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-  $output = curl_exec($ch);
+  curl_exec($ch);
   $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
   curl_close($ch);
 
-  if ($httpcode == 204) {
+  if ($httpcode == 200) {
     echo 'Build triggered, it should be done within a couple of minutes';
   } else {
     echo 'Build failed, please try again in a couple of minutes or contact site administrator';
